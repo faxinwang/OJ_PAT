@@ -30,7 +30,6 @@ int main(){
 	char tmp[10];
 	int count=0,N;
 	int y,m,d;
-
 	
 	cin>>N;
 	for(int i=0;i<N;++i){
@@ -39,7 +38,7 @@ int main(){
 		if(dt<low || dt>high) continue;
 		++count;
 		if(count==1){
-			old = young =string(tmp);
+			old = young = string(tmp);
 			od = yd = dt;
 		}
 		else{
