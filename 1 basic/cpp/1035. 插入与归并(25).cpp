@@ -41,9 +41,9 @@ int main(){
 		while(isNotEqual){
 			isNotEqual = !cmp_array(A,B,N);
 			k *=2;
-			for(int i=0;i < N/k; ++i )
+			for(int i=0; i < N/k; ++i )
 				sort(A+i*k, A+(i+1)*k);
-			sort(A+k*(N/k),A+N); // sort the last range.
+			sort(A+k*(N/k), A+N); // sort the last range.
 		}
 	}
 	print(A,N);
