@@ -1,3 +1,84 @@
+/*
+1012. The Best Rank (25)
+时间限制
+400 ms
+内存限制
+65536 kB
+代码长度限制
+16000 B
+判题程序
+Standard
+作者
+CHEN, Yue
+To evaluate the performance of our first year CS majored students, we consider 
+their grades of three courses only: C - C Programming Language, M - Mathematics 
+(Calculus or Linear Algebra), and E - English. At the mean time, we encourage 
+students by emphasizing on their best ranks -- that is, among the four ranks
+with respect to the three courses and the average grade, we print the best rank 
+for each student.
+
+For example, The grades of C, M, E and A - Average of 4 students are given as 
+the following:
+
+StudentID  C  M  E  A
+310101     98 85 88 90
+310102     70 95 88 84
+310103     82 87 94 88
+310104     91 91 91 91
+Then the best ranks for all the students are No.1 since the 1st one has done t
+he best in C Programming Language, while the 2nd one in Mathematics, the 3rd one 
+in English, and the last one in average.
+
+Input
+
+Each input file contains one test case. Each case starts with a line containing 2 
+numbers N and M (<=2000), which are the total number of students, and the number 
+of students who would check their ranks, respectively. Then N lines follow, 
+each contains a student ID which is a string of 6 digits, followed by the three 
+integer grades (in the range of [0, 100]) of that student in the order of C, M 
+and E. Then there are M lines, each containing a student ID.
+
+Output
+For each of the M students, print in one line the best rank for him/her, and 
+the symbol of the corresponding rank, separated by a space.
+The priorities of the ranking methods are ordered as A > C > M > E. Hence if 
+there are two or more ways for a student to obtain the same best rank, output 
+the one with the highest priority.
+
+If a student is not on the grading list, simply output "N/A".
+
+Sample Input
+5 6
+310101 98 85 88
+310102 70 95 88
+310103 82 87 94
+310104 91 91 91
+310105 85 90 90
+310101
+310102
+310103
+310104
+310105
+999999
+
+Sample Output
+1 C
+1 M
+1 E
+1 A
+3 A
+N/A
+
+题目大意：
+给出每个学生三门课程的成绩和平均成绩，求每个人最好的排名和对应的排序指标。
+如果有多个指标导致相同的最好排名，输出优先级最高的。
+例如 1 C 代码在C课程中成绩排名第1
+
+解题思路：
+分别根据四种指标排序，每次排序后保存每个人在该指标下的名次，
+在输出的时候输出每个人最高的排名和对应的排序指标。 
+*/
+
 #include<iostream>
 #include<string>
 #include<vector>
@@ -98,8 +179,8 @@ int main(){
 	sort(stu.begin(),stu.end(),sortByE);
 	makeRank(stu,3);
 	
-	cout<<"ranks:"<<endl;
-	copy(stu.begin(),stu.end(),ostream_iterator<Student>(cout,"\n"));
+//	cout<<"ranks:"<<endl;
+//	copy(stu.begin(),stu.end(),ostream_iterator<Student>(cout,"\n"));
 
 	while(M--){
 		bool find=false;
@@ -138,42 +219,3 @@ int main(){
 	return 0;
 }
 
-/*
-Sample Input
-5 6
-310101 98 85 88
-310102 70 95 88
-310103 82 87 94
-310104 91 91 91
-310105 85 90 90
-310101
-310102
-310103
-310104
-310105
-999999
-Sample Output
-1 C
-1 M
-1 E
-1 A
-3 A
-N/A
-
-
-5 5
-1001 5 5 5
-1002 4 5 6
-1003 6 5 4
-1004 2 3 4
-1005 4 5 7
-ranks:
-[ id=1005 ,A=16 ,C=4 ,M=5 ,E=7 1 3 1 1  ]
-[ id=1002 ,A=15 ,C=4 ,M=5 ,E=6 2 3 1 2  ]
-[ id=1001 ,A=15 ,C=5 ,M=5 ,E=5 2 2 1 3  ]
-[ id=1003 ,A=15 ,C=6 ,M=5 ,E=4 2 1 1 4  ]
-[ id=1004 ,A=9  ,C=2 ,M=3 ,E=4 5 5 5 4  ]
-
-*/
-
-//http://www.cnblogs.com/Evence/p/4300469.html
