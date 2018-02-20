@@ -48,7 +48,7 @@ using namespace std;
 struct Node{
 	int value;
 	Node *left, *right;
-	Node(char v, Node* left=0, Node* right=0)
+	Node(int v, Node* left=0, Node* right=0)
 	:value(v),left(left),right(right){}
 };
 
